@@ -62,7 +62,9 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * through {@link #register} calls and then manually {@linkplain #refresh refreshed}.
 	 */
 	public AnnotationConfigApplicationContext() {
+		//创建一个读取注解的bean定义读取器
 		this.reader = new AnnotatedBeanDefinitionReader(this);
+		//能够扫描一个类，并且转换成bd
 		this.scanner = new ClassPathBeanDefinitionScanner(this);
 	}
 
@@ -151,6 +153,8 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * e.g. {@link Configuration @Configuration} classes
 	 * @see #scan(String...)
 	 * @see #refresh()
+	 * 1 注意一个配置类
+	 * 2 注册一个bean
 	 */
 	public void register(Class<?>... annotatedClasses) {
 		Assert.notEmpty(annotatedClasses, "At least one annotated class must be specified");
